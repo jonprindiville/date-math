@@ -1,0 +1,25 @@
+body {
+    margin: auto;
+    margin-top: 1em;
+    width: 480px;
+}
+
+#date-pivot,
+#date-op,
+#date-incr,
+#date-incr-unit,
+#date-result {
+    font-size: 2em;
+
+}
+
+#row1 > * {
+  height: 3em;
+}
+
+#row-1 {}
+
+#row-2 {}
+
+#row-3 {}
+
