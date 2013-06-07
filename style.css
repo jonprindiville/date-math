@@ -13,13 +13,17 @@ body {
 
 }
 
-#row1 > * {
-  height: 3em;
+#row-1,
+#row-2,
+#row-3 {
+    margin-top: 2%;
 }
 
-#row-1 {}
+#row-3 {
+    padding-top: 2%;
+    border-top: 3px dotted black;
+}
 
-#row-2 {}
-
-#row-3 {}
-
+#overlay-container {
+    display: none;
+}
