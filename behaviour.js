@@ -27,8 +27,8 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
         // Update display of inputs
         datePivot.setHTML(Y.DataType.Date.format(pivot, {format:"%F"}));
         dateOp.setHTML(op);
-        dateIncr.set('value', incr);
         dateIncrUnit.set('value', incrUnit);
+        dateIncr.set('value', isNaN(incr)?(""):(incr));
         
         // Compute new result
         newResult = new Date(pivot);
@@ -110,8 +110,12 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
     });
 
     dateIncr.on('keyup', function (e) {
-        incr = parseInt(this.get('value'));
-        if (incr == NaN) incr = 0;
+        newIncr = parseInt(this.get('value'));
+        if (isNaN(newIncr)) {
+            incr = 0;
+        } else {
+            incr = newIncr;
+        }
         refreshDisplay();
     });
 
