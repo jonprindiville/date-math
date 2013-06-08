@@ -9,12 +9,18 @@
 </head>
 <body class="yui3-skin-sam">
     <div id="row-1" class="yui3-g">
-        <button id="date-pivot"     class="yui3-u-5-6">today</button>
-        <button id="date-op"        class="yui3-u-1-6">+</button>
+        <button id="date-pivot"     class="yui3-u-3-5">today</button>
+        <div class="yui3-u-1-5 spacer"></div>
+        <button id="date-op"        class="yui3-u-1-5">+</button>
     </div>
     <div id="row-2" class="yui3-g">
-        <button id="date-incr"      class="yui3-u-1-3">10</button>
-        <button id="date-incr-unit" class="yui3-u-2-3">days</button>
+        <input id="date-incr" type="text" class="yui3-u-1-5" value="10" />
+        <div class="yui3-u-1-5 spacer"></div>
+        <select id="date-incr-unit" class="yui3-u-3-5">
+            <option>days</option>
+            <option>weeks</option>
+            <option>months</option>
+        </select>
     </div>
     <div id="row-3" class="yui3-g">
         <p id="date-result" class="yui3-u-1">result</div>

@@ -1,4 +1,5 @@
 body {
+    font-family: monospace;
     margin: auto;
     margin-top: 1em;
     width: 480px;
@@ -9,19 +10,26 @@ body {
 #date-incr,
 #date-incr-unit,
 #date-result {
-    font-size: 2em;
+    font-size: 3em;
+    text-align: center;
+}
 
+#date-result {
+    font-size: 4.5em;
 }
 
 #row-1,
 #row-2,
 #row-3 {
-    margin-top: 2%;
+    margin-top: 10%;
 }
 
 #row-3 {
-    padding-top: 2%;
-    border-top: 3px dotted black;
+    border-top: 2px solid black;
+}
+
+.spacer {
+    margin: -2%;
 }
 
 #overlay-container {
