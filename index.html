@@ -1,20 +1,36 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.10.3/build/cssnormalize-context/cssnormalize-context-min.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.10.3/build/cssreset/cssreset-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.10.3/build/cssbase/cssbase-min.css">
+<!--    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.10.3/build/cssnormalize-context/cssnormalize-context-min.css"> -->
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.10.3/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="http://yui.yahooapis.com/3.10.3/build/yui/yui-min.js"></script>
     <script src="behaviour.js"></script>
+    <title>date math</title>
 </head>
-<body class="yui3-skin-night">
+<body class="yui3-skin-sam">
     <div id="row-1" class="yui3-g">
         <button id="date-pivot"     class="yui3-u-3-5">today</button>
         <div class="yui3-u-1-5 spacer"></div>
         <button id="date-op"        class="yui3-u-1-5">+</button>
     </div>
     <div id="row-2" class="yui3-g">
-        <input id="date-incr" type="text" class="yui3-u-1-5" value="10" />
+<!--        <input id="date-incr" type="text" class="yui3-u-1-5" value="10" /> -->
+        <select id="date-incr" class="yui3-u-1-5">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>
         <div class="yui3-u-1-5 spacer"></div>
         <select id="date-incr-unit" class="yui3-u-3-5">
             <option>days</option>
@@ -23,7 +39,7 @@
         </select>
     </div>
     <div id="row-3" class="yui3-g">
-        <p id="date-result" class="yui3-u-1">result</div>
+        <p id="date-result" class="yui3-u-1">result</p>
     </div>
     <div id="calendar-overlay" class="yui3-overlay-loading">
         <div class="yui3-widget-bd">

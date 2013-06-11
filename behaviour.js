@@ -43,7 +43,7 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
         // Update result
         result = newResult;
         dateResult.setHTML(Y.DataType.Date.format(result, {format:"%e %b %Y"}));
-        dateResult.render();
+        /*dateResult.render();*/
     }
 
     Y.on("domready", refreshDisplay);
@@ -90,6 +90,12 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
             refreshDisplay();
         });
     });
+    
+    // Click outside of overlay
+    //Y.one('body').on('click', function (e) {
+    //    calOverlay.hide();
+    //    cal.hide();
+    //});
 
 
     // Toggle the operation
@@ -109,7 +115,7 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
 
     });
 
-    dateIncr.on('keyup', function (e) {
+    dateIncr.on('change', function (e) {
         newIncr = parseInt(this.get('value'));
         if (isNaN(newIncr)) {
             incr = 0;

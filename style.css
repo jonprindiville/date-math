@@ -2,7 +2,7 @@ body {
     font-family: monospace;
     margin: auto;
     margin-top: 1em;
-    width: 480px;
+    width:90%
 }
 
 #date-pivot,
@@ -10,21 +10,23 @@ body {
 #date-incr,
 #date-incr-unit,
 #date-result {
-    font-size: 3em;
+    font-size: 5em;
     text-align: center;
 }
 
 #date-result {
-    font-size: 4.5em;
+    font-size: 6em;
 }
 
 #row-1,
 #row-2,
 #row-3 {
     margin-top: 10%;
+    height: 30%;
 }
 
 #row-3 {
+    padding-top: 10%;
     border-top: 4px solid black;
 }
 
@@ -32,6 +34,10 @@ body {
     margin: -2%;
 }
 
-#overlay-container {
-    display: none;
+#calendar-overlay {
+
+}
+
+#insert-cal-here {
+    background: white;
 }
