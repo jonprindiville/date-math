@@ -2,7 +2,12 @@ body {
     font-family: monospace;
     margin: auto;
     margin-top: 1em;
-    width:90%
+    width:85%
+}
+
+#date-pivot,
+#date-op {
+    width: 100%;
 }
 
 #date-pivot,
@@ -10,23 +15,24 @@ body {
 #date-incr,
 #date-incr-unit,
 #date-result {
-    font-size: 5em;
+    font-size: 6em;
     text-align: center;
 }
 
+#date-pivot,
 #date-result {
-    font-size: 6em;
+    margin: auto;
 }
 
 #row-1,
 #row-2,
-#row-3 {
-    margin-top: 10%;
-    height: 30%;
+#row-3,
+#row-4 {
+    margin-top: 7%;
 }
 
-#row-3 {
-    padding-top: 10%;
+#row-4 {
+    padding-top: 7%;
     border-top: 4px solid black;
 }
 
@@ -34,10 +40,15 @@ body {
     margin: -2%;
 }
 
-#calendar-overlay {
-
+#insert-cal-here {
+    background: white;
+    font-size: 2em;
 }
 
-#insert-cal-here {
+#cal-close {
+    margin-top: 1em;
+    color: red;
+    font-size: 2em;
+    text-align: center;
     background: white;
 }

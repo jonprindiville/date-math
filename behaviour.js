@@ -1,6 +1,11 @@
+// Constants
+var OP_PLUS  = "plus";
+var OP_MINUS = "minus";
+var DATE_FMT = "%e %b %Y";
+
 // Parameters
 var pivot    = new Date(); // Today
-var op       = "+";
+var op       = OP_PLUS;
 var incr     = 3;
 var incrUnit = "weeks";
 var result   = null;
@@ -13,11 +18,12 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
     var dateIncr     = Y.one("#date-incr");
     var dateIncrUnit = Y.one("#date-incr-unit");
     var dateResult   = Y.one("#date-result");
+    var calClose     = Y.one("#cal-close");
 
     // Do whatever operation the UI currently shows
     function doOp(a, b) {
-        if (op == "+") return a + b;
-        if (op == "-") return a - b;
+        if (op == OP_PLUS) return a + b;
+        if (op == OP_MINUS) return a - b;
         return null;
     }
 
@@ -25,7 +31,7 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
     function refreshDisplay() {
 
         // Update display of inputs
-        datePivot.setHTML(Y.DataType.Date.format(pivot, {format:"%F"}));
+        datePivot.setHTML(Y.DataType.Date.format(pivot, {format:DATE_FMT}));
         dateOp.setHTML(op);
         dateIncrUnit.set('value', incrUnit);
         dateIncr.set('value', isNaN(incr)?(""):(incr));
@@ -42,12 +48,13 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
 
         // Update result
         result = newResult;
-        dateResult.setHTML(Y.DataType.Date.format(result, {format:"%e %b %Y"}));
+        dateResult.setHTML(Y.DataType.Date.format(result, {format:DATE_FMT}));
         /*dateResult.render();*/
     }
 
-    Y.on("domready", refreshDisplay);
-    Y.on("domready", function() {
+    Y.on("domready", function (e) {
+        hide_cal();
+        refreshDisplay();
         dateIncr.get('childNodes').remove();
         for (i = 0; i < 100; ) {
             dateIncr.append('<option>' + ++i + '</option>');
@@ -62,8 +69,8 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
     // Calendar overlay
     var calOverlay = new Y.Overlay({
         srcNode: "#calendar-overlay",
-        width: "480px",
-        height: "90%",
+        width:'80%',
+        height: '70%',
         centered: true});
 
     // Calendar
@@ -72,6 +79,20 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
         width:'100%',
         showPrevMonth: true,
         showNextMonth: true,});
+        
+    function show_cal () {
+        calOverlay.render();
+        cal.render();
+        calOverlay.show();
+        cal.show();
+        calClose.show();
+    }
+    
+    function hide_cal () {
+        calOverlay.hide();
+        cal.hide();
+        calClose.hide();
+    }
 
 
     ///////////////////////////////////////////////////////////////////
@@ -81,27 +102,22 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
     // Date change
     datePivot.on('click', function (e) {
         // display overlay
-        calOverlay.render();
-        cal.render();
-        calOverlay.show();
-        cal.show();
+        show_cal();
 
         // Listen for selection change, update variables, display
         cal.on("selectionChange", function (ev) {
             // Will only be one selection unless we allow mutliple
             pivot = ev.newSelection[0];
             // Expose main UI
-            calOverlay.hide();
-            cal.hide();
+            hide_cal();
             refreshDisplay();
         });
     });
     
-    // Click outside of overlay
-    //Y.one('body').on('click', function (e) {
-    //    calOverlay.hide();
-    //    cal.hide();
-    //});
+    // Close link for overlay
+    Y.one('#cal-close').on('click', function (e) {
+        hide_cal();
+    });
 
 
     // Toggle the operation
@@ -109,10 +125,10 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
 
         current = this.getHTML();
         
-        if (current == "+") {
-            op = "-";
-        } else if (current == "-") {
-            op = "+";
+        if (current == OP_PLUS) {
+            op = OP_MINUS;
+        } else if (current == OP_MINUS) {
+            op = OP_PLUS;
         } else {
             alert("Well, something is broken.");
         }
@@ -124,7 +140,7 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
     dateIncr.on('change', function (e) {
         newIncr = parseInt(this.get('value'));
         if (isNaN(newIncr)) {
-            incr = 0;
+            incr = 1;
         } else {
             incr = newIncr;
         }
