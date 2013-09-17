@@ -47,6 +47,12 @@ YUI().use('overlay', 'calendar', 'node', 'event', function (Y) {
     }
 
     Y.on("domready", refreshDisplay);
+    Y.on("domready", function() {
+        dateIncr.get('childNodes').remove();
+        for (i = 0; i < 100; ) {
+            dateIncr.append('<option>' + ++i + '</option>');
+        }
+    });
 
 
     ///////////////////////////////////////////////////////////////////
