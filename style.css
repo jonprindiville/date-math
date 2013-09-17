@@ -1,5 +1,4 @@
 body {
-    font-family: monospace;
     margin: auto;
     margin-top: 1em;
     width:85%
@@ -15,6 +14,7 @@ body {
 #date-incr,
 #date-incr-unit,
 #date-result {
+    font-family: monospace;
     font-size: 6em;
     text-align: center;
 }
